@@ -208,38 +208,38 @@ def add_user():
             if password == conf_pwd:
                 new_user()
                 message = "User created successfully..!!"
-                # fromaddr = 'poojavadher24@gmail.com'
-                # toaddr = email
+                fromaddr = 'poojavadher24@gmail.com'
+                toaddr = email
 
-                # msg = MIMEMultipart()
-                # msg['From'] = fromaddr
-                # msg['To'] = toaddr
-                # msg['Subject'] = "Verification Email"
+                msg = MIMEMultipart()
+                msg['From'] = fromaddr
+                msg['To'] = toaddr
+                msg['Subject'] = "Verification Email"
 
-                # html = """\n\n
-                #                             <!doctype html>
-                #                             <body>
-                #                                     Dear """ + username + """,
-                #                                     <div class="main_content">
-                #                                     <p>Please verify your account with :<br>
-                #                                             Username	-   """ + username + """<br>
-                #                                             Email	-   """ + email + """<br>
-                #                                             Password	-   """ + password + """<br>
-                #                                     </p>
-                #                                     <a href="http://127.0.0.1:5000/user-login">Click Here</a> to login to your account.
-                #                                     </div>
-                #                             </body>
-                #                             </html>
-                #                     """
-                # part2 = MIMEText(html, 'html')
-                # msg.attach(part2)
+                html = """\n\n
+                                            <!doctype html>
+                                            <body>
+                                                    Dear """ + username + """,
+                                                    <div class="main_content">
+                                                    <p>Please verify your account with :<br>
+                                                            Username	-   """ + username + """<br>
+                                                            Email	-   """ + email + """<br>
+                                                            Password	-   """ + password + """<br>
+                                                    </p>
+                                                    <a href="http://127.0.0.1:5000/user-login">Click Here</a> to login to your account.
+                                                    </div>
+                                            </body>
+                                            </html>
+                                    """
+                part2 = MIMEText(html, 'html')
+                msg.attach(part2)
 
-                # server = smtplib.SMTP('smtp.gmail.com', 587)
-                # server.starttls()
-                # server.login(os.environ["EMAIL"], os.environ["PASS"])
-                # text = msg.as_string()
-                # server.sendmail(fromaddr, toaddr, text)
-                # server.quit()
+                server = smtplib.SMTP('smtp.gmail.com', 587)
+                server.starttls()
+                server.login(os.environ["EMAIL"], os.environ["PASS"])
+                text = msg.as_string()
+                server.sendmail(fromaddr, toaddr, text)
+                server.quit()
                 return render_template("adduser.html", success=message)
             else:
                 message = "Password and confirm password doesn't match..!! "
