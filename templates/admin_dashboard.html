@@ -1,0 +1,64 @@
+        {% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-warning" href="#"><i class="fa fa-user-circle m-2 text-warning"></i>Welcome, Admin</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a href="{{url_for('admin_panel')}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{url_for('logout_admin')}}">Logout</a>
+        </li>
+      </ul>
+      <!-- <form class="d-flex">
+        <input class="form-control search me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-warning" type="submit">Search</button>
+      </form> -->
+    </div>
+  </div>
+</nav>
+<div class="container-fluid p-5">
+  <table class="table table-hover table-light">
+    <h3>Employee Detail:</h3>
+    <thead>
+      <tr>
+        <a href="{{url_for('add_user_form')}}" class="p-3 btn-link text-primary pull-right m-3">+Add user<i class="fa fa-user m-1"></i></a>
+      </tr>
+      <tr>
+        <th>Username</th>
+        <th>Full Name</th>
+        <th>Email Id</th>
+        <th>DOB</th>
+        <th>Mobile Number</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Date of updation</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in account %}
+      <tr>
+        <td>{{ row[13] or '' }}</td>
+        <td>{{ row[2] or '' }} {{ row[3] or '' }}</td>
+        <td>{{ row[14] or '' }}</td>
+        <td>{{ row[4] or '' }}</td>
+        <td>{{ row[5] or '' }}</td>
+        <td>{{ row[6] or '' }}</td>
+        <td>{{ row[7] or '' }}, {{ row[8] or '' }}, {{ row[10] or '' }}, {{ row[9] or '' }}</td>
+        <td>{{ row[11] or '' }}</td>
+        <td><a href="{{url_for('fetch_update_user', user_id= row[1] )}}"><i
+              class="fa fa-pencil m-2 text-warning"></i></a>
+          <a href="{{url_for('delete', user_id= row[1] )}}"
+            onclick="return confirm('Are you sure you want to Delete?');"><i
+              class="fa fa-trash m-2 text-danger"></i></a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

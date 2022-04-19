@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}User Dashboard{% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-warning" href="#"><i class="fa fa-user-circle m-2 text-warning"></i>Welcome, {{
+      session['username'] }}</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a href="{{url_for('user_panel')}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{url_for('logout')}}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container w-50 p-5">
+  <form action="{{ url_for('edit')}}" method="post">
+    <h4>Update Profile</h4><hr>
+    <div class="form-group">
+      <input class="form-control" type="hidden" name="id" placeholder="id" value={{account['user_id']}}>
+    </div>
+    <div class="row">
+      <div class="coll-lg-6 col-md-6">
+        <div class="form-group">
+          <label>First Name:</label>
+          <input class="form-control" type="text" name="fname" placeholder="First Name" value={{account['first_name'] or '' }}>
+        </div>
+        <div class="form-group">
+          <label>Last Name:</label>
+          <input class="form-control" type="text" name="lname" placeholder="Last Name" value={{account['last_name'] or '' }}>
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input class="form-control" type="text" name="fname" placeholder="Email Id" value={{account['email'] or '' }}
+            disabled>
+        </div>
+        <div class="form-group">
+          <label>Date of Birth:</label>
+          <input class="form-control" type="date" name="dob" placeholder="Date of Birth" value={{account['dob']  or '' }}>
+        </div>
+        <div class="form-group">
+          <label>Gender:</label>
+          <select name="gender" class="form-control" value={{account['gender'] or '' }}> 
+            <option value="{{account['gender'] or '' }}" selected>{{account['gender'] or '' }}</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Mobile No.<span class="h6 text-muted"> (ex. 7/8/9*********)</span></label>
+          <input class="form-control" type="tel" pattern="^[789]\d{9}$" name="mobile" placeholder="Mobile No." maxlength="10" minlength="10" 
+          value={{account['mobile_number'] or '' }}>
+        </div>
+        <div class="form-group">
+          <label>Addresss:</label>
+          <input class="form-control" type="text" name="address" placeholder="Addresss" value={{account['address'] or '' }}>
+        </div>
+        <div class="form-group">
+          <label>City:</label>
+          <input class="form-control" type="text" name="city" placeholder="City" value={{account['city'] or '' }}>
+        </div>
+        <div class="form-group">
+          <label>Zipcode:</label>
+          <input class="form-control" type="text" name="zipcode" placeholder="Zipcode" maxlength="6" minlength="6" value={{account['zipcode'] or '' }}>
+        </div>
+        <div class="form-group">
+          <label>State:</label>
+          <select id="country-state" name="state" class="form-control" value={{account['state'] or '' }}>
+            <option value="{{account['state'] or '' }}" selected>{{account['state'] or '' }}</option>
+            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+            <option value="Daman and Diu">Daman and Diu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat" >Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Ladakh">Ladakh</option>
+            <option value="Lakshadweep">Lakshadweep</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Puducherry">Puducherry</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradeshvv">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+        </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-warning btn-login">Update</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

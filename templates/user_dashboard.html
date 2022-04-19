@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}User Dashboard{% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand text-warning" href="#"><i class="fa fa-user-circle m-2 text-warning"></i>Welcome, {{
+            session['username'] }}</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="{{url_for('user_panel')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url_for('logout')}}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="pt-3">
+    <form method="post">
+        <div class="container-fluid row mt-4">
+            <div class="col-lg-2 col-md-6 col-sm-12">
+                <div class="profile-img mb-3">
+                    <img src="https://source.unsplash.com/random/275x183/?nature" alt="" />
+                </div>
+            </div>
+            <div class="m-2 col-lg-6 col-md-6 col-sm-12">
+                <div class="profile-head">
+                    <h4>
+                        {{account[2] or '' }} {{account[3] or '' }}
+                    </h4>
+                    <h6>
+                        Trainee Software Developer
+                    </h6>
+                    <h6><a href="{{url_for('fetch_edit_user', user_id=account[1])}}" class="text-warning">Edit Profile>>></a></h6>
+                </div>
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="row mt-5">
+                        <div class="col-md-6">
+                            <h5>Name</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{account[2] or '' }} {{account[3] or '' }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Email</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{account[14] or '' }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Date of birth</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{account[4] or '' }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Mobile No.</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{account[5] or '' }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Gender</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{account[6] or '' }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Address</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{account[7] or '' }}, {{account[8] or '' }}, {{account[10] or '' }}, {{account[9] or '' }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Updation date</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{account[11] or '' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

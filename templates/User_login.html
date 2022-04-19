@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}User Login{% endblock %}
+{% block content %}
+<div class="container w-50">
+    <div class="row main">
+        <div class="col-lg-8 col-md-8 col-sm-8 main-form">
+            <h2>User Login</h2>
+            <hr>
+            <form method="POST" action="{{ url_for('user_login')}}">
+                <div class="mb-3">
+                    <label class="form-label">Email address<span class="text-danger"> *</span></label>
+                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password <span class="text-danger"> *</span></label>
+                    <input type="password" class="form-control" name="password" required>
+                </div>
+                <div class="btn-login">
+                    <button type="submit" class="btn btn-warning">Log In</button>
+                </div>
+            </form>
+            {% if error %}
+            <p class="error"><strong>Error:</strong> {{ error }}
+            {% endif %}
+        </div>
+        <div class="form-img col-lg-12 col-md-12 col-sm-12 p-0">
+            <div class="lock-img">
+                <img src="../static/images/lock.png"><br>
+                <h5>No account?<br><a class="text-warning" href="mailto:poojavadher24@gmail.com">Contact us</a></h5>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

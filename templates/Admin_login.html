@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Admin Login{% endblock %}
+{% block content %}
+<div class="container w-50">
+  <div class="row main">
+    <div class="col-lg-8 col-md-8 col-sm-8 main-form">
+      <h2>Admin Login</h2>
+      <hr>
+      <form method="POST" action="{{ url_for('admin_login')}}">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address <span class="text-danger"> *</span></label>
+          <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required> 
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password <span class="text-danger"> *</span></label>
+          <input type="password" class="form-control" name="password" id="exampleInputPassword1" required> 
+        </div>
+        <div class="btn-login">
+          <button type="submit" class="btn btn-warning">Log In</button>
+        </div>
+      </form>
+      {% if error %}
+      <p class="error"><strong>Error:</strong> {{ error }}
+        {% endif %}
+    </div>
+    <div class="form-img col-lg-12 col-md-12 col-sm-12">
+      <img class="lock-img" src="../static/images/lock.png">
+    </div>
+  </div>
+</div>
+{% endblock %}

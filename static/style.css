@@ -1,0 +1,80 @@
+nav {
+  color: white;
+  font-size: 1.2rem;
+  background-size: cover;
+  background-image: url("./images/main-bg.jpg");
+  padding: 0.5rem 1rem;
+}
+nav ul {
+  list-style: none;
+}
+nav ul li a {
+  color: white;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+.search {
+  margin: unset;
+  height: 3rem;
+}
+.main {
+  border-radius: 0.3rem; 
+  box-shadow: 0px 0px 23px 0px rgb(156, 156, 156);
+  margin-top: 6rem;
+  height: 45rem;
+}
+.main-form {
+  margin:3rem;
+  margin-bottom: unset;
+}
+label {
+  font-size: 1.2rem;
+  color: rgb(85, 72, 72);
+  margin-top: 0.5rem;
+}
+input {
+  margin-bottom: 0.5rem;
+}
+.btn-warning {
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 10rem;
+  height: 3rem;
+}
+.btn-login {
+  margin-top: 1.5rem;
+}
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn:focus-within,
+.btn::-moz-focus-outer{
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+.form-img {
+  background-size: cover;
+  background-position: left;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  background-image: url("./images/main-bg.jpg");
+}
+.lock-img {
+  color: white;
+  position: relative;
+  top:20%;
+  left: 46%;
+}
+.error {
+  color: red;
+  margin-top: 3rem;
+}
+@media screen and (max-width: 576px) {
+  .main-form{
+    margin: 1rem;
+  }
+  .container{
+    width: 100%;
+  }
+}
